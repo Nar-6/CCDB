@@ -17,11 +17,10 @@ class AbonneController extends Controller
             'nom' => 'required|string',
             'prenom' => 'required|string',
             'email' => 'required|email|unique:abonne,email',
-            'numero' => 'required|string|unique:abonne,numero',
         ]);
 
         // Vérifier si l'utilisateur est déjà abonné
-        $abonneExistant = Abonne::where('email', $request->email)->orWhere('numero', $request->numero)->exists();
+        $abonneExistant = Abonne::where('email', $request->email)->exists();
 
         if (!$abonneExistant) {
             // Créer un nouvel objet Abonne avec les données du formulaire
@@ -29,7 +28,6 @@ class AbonneController extends Controller
             $abonne->nom = $request->nom;
             $abonne->prenom = $request->prenom;
             $abonne->email = $request->email;
-            $abonne->numero = $request->numero;
 
             // Sauvegarder l'abonné dans la base de données
             $abonne->save();

@@ -6,9 +6,11 @@ use App\Http\Controllers\PaiementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Mail\NewPost;
+use App\Models\Membre;
 use App\Models\Post;
 use Illuminate\Support\Facades\Mail;
 use Kkiapay\Kkiapay;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +25,17 @@ use Kkiapay\Kkiapay;
 
 
 Route::get('/', function () {
+    $membreAleatoire = Membre::inRandomOrder()->first();
     $lastPost = Post::orderBy('created_at', 'desc')->first();
-    return view('accueil/accueil',['lastPost' => $lastPost]);
+    return view('accueil/accueil',['lastPost' => $lastPost, 'membreAleatoire' => $membreAleatoire]);
 })->name('home');
 
-// Route::get('/new_post', function () {
-//     $post = Post::find(1);
-//     // Mail::to('kountobi@gmail.com')->send(new NewPost($post));
-//     return view('emails/new_post',['post' => $post]);
-
-// });
+Route::get('/membres', function () {
+    $membres = Membre::all();
+    return view('accueil/membres',['membres' => $membres]);
+})->name('membres');
 
 Route::get('/page/payer', [PaiementController::class, 'pagePaiement'])->name('page.paiement');
-
 
 Route::get('/test', [CommentController::class, 'test'])->name('test');
 

@@ -38,8 +38,40 @@
   <div class="photo-telephone">
     <img src="{{ asset('images/ccdb5.png')}}" alt="">
   </div>
-    
-  <div id="row" class="row ">
+  @php
+  $imagesDisponibles = range(4, 24); // Créer un tableau avec les numéros d'images disponibles
+  $i = array_rand($imagesDisponibles); // Sélectionner une image aléatoire
+  $imageI = $imagesDisponibles[$i]; // Récupérer la valeur de l'image sélectionnée
+  unset($imagesDisponibles[$i]); // Retirer l'image sélectionnée des images disponibles
+
+  $j = array_rand($imagesDisponibles); // Sélectionner une autre image aléatoire parmi les restantes
+  $imageJ = $imagesDisponibles[$j]; // Récupérer la valeur de l'image sélectionnée
+  unset($imagesDisponibles[$j]); // Retirer l'image sélectionnée des images disponibles
+
+  $k = array_rand($imagesDisponibles); // Sélectionner une autre image aléatoire parmi les restantes
+  $imageK = $imagesDisponibles[$k]; // Récupérer la valeur de l'image sélectionnée
+  unset($imagesDisponibles[$k]); // Retirer l'image sélectionnée des images disponibles
+
+  $l = array_rand($imagesDisponibles); // Sélectionner une autre image aléatoire parmi les restantes
+  $imageL = $imagesDisponibles[$l]; // Récupérer la valeur de l'image sélectionnée
+  unset($imagesDisponibles[$l]); // Retirer l'image sélectionnée des images disponibles
+
+  $m = array_rand($imagesDisponibles); // Sélectionner une autre image aléatoire parmi les restantes
+  $imageM = $imagesDisponibles[$m]; // Récupérer la valeur de l'image sélectionnée
+  unset($imagesDisponibles[$m]); // Retirer l'image sélectionnée des images disponibles
+
+  $n = array_rand($imagesDisponibles); // Sélectionner une autre image aléatoire parmi les restantes
+  $imageN = $imagesDisponibles[$n]; // Récupérer la valeur de l'image sélectionnée
+  unset($imagesDisponibles[$n]); // Retirer l'image sélectionnée des images disponibles
+
+  $o = array_rand($imagesDisponibles); // Sélectionner une autre image aléatoire parmi les restantes
+  $imageO = $imagesDisponibles[$o]; // Récupérer la valeur de l'image sélectionnée
+  unset($imagesDisponibles[$o]); // Retirer l'image sélectionnée des images disponibles
+
+  $p = array_rand($imagesDisponibles); // Sélectionner une autre image aléatoire parmi les restantes
+  $imageP = $imagesDisponibles[$p]; // Récupérer la valeur de l'image sélectionnée
+@endphp
+<div id="row" class="row ">
     
     <div id="carouselExampleIndicators" class="carousel slide"  data-ride="carousel">
       <ol class="carousel-indicators">
@@ -49,14 +81,14 @@
       </ol>
       <div class="carousel-inner shadow">
         <div class="carousel-item active" >
-          <img class="d-block w-100" src="{{asset('images/img1.jpg')}}" alt="First slide">
+          <img class="d-block w-100" src="{{asset('images/img'.$imageI.'.jpg')}}" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
               <h1>Bienvenue</h1>
               <p>Le CCDB est une association des ressortissants de la commune de Bassila du monde entier.</p>
             </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100 " src="{{asset('images/img2.jpg')}}" alt="Second slide">
+          <img class="d-block w-100" src="{{asset('images/img'.$imageJ.'.jpg')}}" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
               <h1>Activités</h1>
               <p>Nous nous sommes donner pour mission d'unifier la communauté bassiloise à travers le monde.
@@ -64,7 +96,7 @@
             </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{asset('images/img3.jpg')}}" alt="Third slide">
+          <img class="d-block w-100" src="{{asset('images/img'.$imageK.'.jpg')}}" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
               <h1>Culture Bassiloise</h1>
               <p>Religion, Habitudes, Mode de vie. Parcourez notre site web pour tout connaitre de cette communauté.</p>
@@ -109,24 +141,24 @@
 <div id="piste" class="piste">
   <div class="liste-photo">
       <div class="photo">
-        <img src="{{ asset('images/img2.jpg')}}" alt="">
+        <img src="{{ asset('images/img'.$imageL.'.jpg')}}" alt="">
       </div>
       <div class="photo">
-        <img src="{{ asset('images/img1.jpg')}}" alt="">
+        <img src="{{ asset('images/img'.$imageM.'.jpg')}}" alt="">
       </div>
       <div class="photo">
-        <img src="{{ asset('images/img3.jpg')}}" alt="">
+        <img src="{{ asset('images/img'.$imageN.'.jpg')}}" alt="">
       </div>
       <div class="photo">
-        <img src="{{ asset('images/img2.jpg')}}" alt="">
+        <img src="{{ asset('images/img'.$imageO.'.jpg')}}" alt="">
       </div>
       <div class="photo">
-        <img src="{{ asset('images/img2.jpg')}}" alt="">
+        <img src="{{ asset('images/img'.$imageP.'.jpg')}}" alt="">
       </div>
   </div>
 </div>
 
-
+@if ($lastPost)
 <div class="container" id="container2">
 
   <h2>Notre dernier évènement :  <br> <br> <span>{{$lastPost->titre}}</span></h2>
@@ -147,6 +179,37 @@
   </div>
 
 </div>
+@else
+<div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+  Des evenements prochainement</div>
+@endif
+
+@if ($membreAleatoire)
+<div class="container">
+  <div class="membres">
+
+    <div class="membre">
+      <div class="photo-membre-container">
+        <div class="photo-membre  shadow">
+          <img src="{{ url('/images/' . basename($membreAleatoire->photo))}}" alt="">
+        </div>
+      </div>
+      <div class="nom-membre">
+        <h4>{{$membreAleatoire->nom}} {{$membreAleatoire->prenom}}</h4>
+      </div>
+      <div class="role-membre">
+        <h3>{{$membreAleatoire->role}}</h3>
+      </div>
+    </div>
+
+    <div class="autres-activites autres-membres">
+      <p><a href="{{ route('membres') }}">Voir tous les membres</a></p>
+    </div>
+
+  </div>
+</div>
+@endif
+
   <div class="conclusion">
 
     <div class="conclusion-liens">
@@ -171,7 +234,7 @@
       </div>
     <div class="barre-transparent" id="btrans"></div>
       <div class="donnerdon">
-          <a href="{{ route('page.paiement') }}"><button id="btn-abonnement" class="btn btn-abonnement">
+          <a href="https://www.paypal.com/donate/?hosted_button_id=WBKFYJG33DHUY"><button id="btn-abonnement" class="btn btn-abonnement">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
               <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
               <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>

@@ -2,21 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AbonneResource\Pages;
-use App\Filament\Resources\AbonneResource\RelationManagers;
-use App\Models\Abonne;
+use App\Filament\Resources\MembreResource\Pages;
+use App\Filament\Resources\MembreResource\RelationManagers;
+use App\Models\Membre;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AbonneResource extends Resource
+class MembreResource extends Resource
 {
-    protected static ?string $model = Abonne::class;
+    protected static ?string $model = Membre::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -24,7 +27,10 @@ class AbonneResource extends Resource
     {
         return $form
             ->schema([
-                //
+                FileUpload::make('photo')->acceptedFileTypes(['image/*'])->required(),
+                TextInput::make('nom')->required(),
+                TextInput::make('prenom')->required(),
+                TextInput::make('role')->required(),
             ]);
     }
 
@@ -32,11 +38,13 @@ class AbonneResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('photo')
+                ->circular()
+                ->square(),
                 TextColumn::make('nom'),
                 TextColumn::make('prenom'),
-                TextColumn::make('email'),
-                TextColumn::make('numero'),
-                ])
+                TextColumn::make('role'),  
+            ])
             ->filters([
                 //
             ])
@@ -60,9 +68,9 @@ class AbonneResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAbonnes::route('/'),
-            'create' => Pages\CreateAbonne::route('/create'),
-            'edit' => Pages\EditAbonne::route('/{record}/edit'),
+            'index' => Pages\ListMembres::route('/'),
+            'create' => Pages\CreateMembre::route('/create'),
+            'edit' => Pages\EditMembre::route('/{record}/edit'),
         ];
     }
 }

@@ -22,24 +22,23 @@
 <div class="container">
     <div class="liste-act">
         
-        @foreach ($posts as $post)
-
-            <div class="activite shadow mb-5 bg-dark ">
-                <div class="photo-activite">
-                    {{-- <img src="{{asset('images/img1.jpg')}}" alt=""> --}}
-
-                    <img src="{{url('/images/' . basename($post->photo))}}" alt="">
-                </div>
-                <div class="infos-activite">
-                    <h4>{{$post->titre}}</h4>
-                    <p>
-                        {{$post->description}}</p>
-                    <a href="{{ route('post.show', ['id' => $post->id]) }}"><button type="button"  class="btn-activite">Info</button></a>
-                </div>
+        @forelse ($posts as $post)
+        <div class="activite shadow mb-5 bg-dark ">
+            <div class="photo-activite">
+                {{-- <img src="{{asset('images/img1.jpg')}}" alt=""> --}}
+                <img src="{{url('/images/' . basename($post->photo))}}" alt="">
             </div>
-
-            {{-- <pre>{{url('/images/' . basename($post->photo)) }} <br> {{asset('images/img1.jpg')}}</pre> --}}
-        @endforeach
+            <div class="infos-activite">
+                <h4>{{$post->titre}}</h4>
+                <p>{{$post->description}}</p>
+                <a href="{{ route('post.show', ['id' => $post->id]) }}"><button type="button"  class="btn-activite">Info</button></a>
+            </div>
+        </div>
+    @empty
+    <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+        Des evenements prochainement</div>
+          @endforelse
+    
         
     </div>
 </div>

@@ -45,7 +45,6 @@
 
     }
 </style>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const donForm = document.getElementById('donForm');

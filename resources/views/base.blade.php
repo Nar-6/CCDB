@@ -34,7 +34,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  
     
 </head>
 <body>
@@ -53,7 +53,7 @@
                 @yield('navigationpage')
                 
                 
-                    <a id="btn-abonnement" href="{{ route('page.paiement')}}" class="btn">Faire un don</a>
+                    <a id="btn-abonnement" href="https://www.paypal.com/donate/?hosted_button_id=WBKFYJG33DHUY" class="btn">Faire un don</a>
                 
                 
             </div>
@@ -104,7 +104,9 @@
         color: rgb(132, 131, 131);
        }
        
-
+       
+        
+    
        
     </style>
 
@@ -136,9 +138,19 @@
                     } else {
                         navbarCollapse.classList.add("show");
                     }              
-                 });
+                });
+
+                // const images = document.querySelectorAll('img');
+                // images.forEach(image => {
+                //     image.addEventListener('load', () => {
+                //         image.style.display = 'block';
+                //     });
+                // });
             });
 
         </script>
+        
+
+     
     </body>
 </html>

@@ -57,7 +57,7 @@
               <h5>Pour accompagner l'émergence de cette commune.</h5>
             </div>
             
-            <a href="{{ route('page.paiement') }}"><button id="btn-abonnement" class="btn btn-abonnement">
+            <a href="https://www.paypal.com/donate/?hosted_button_id=WBKFYJG33DHUY"><button id="btn-abonnement" class="btn btn-abonnement">
                 Faire un don
               </button></a>            
           </div>

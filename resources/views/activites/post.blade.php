@@ -178,6 +178,16 @@
                       object-position: center;
                       object-fit: contain; /* Pour couvrir toute la zone */
                     }
+                    #modal-dialog{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        flex-direction: column-reverse;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                    }
                     .carousel-item{
                         height: fit-content;
                         max-height: 80vh
@@ -185,6 +195,11 @@
                        object-position: center;
                       object-fit: contain;
 
+                    }
+                    #close{
+                        color: white;
+                        margin-left:50%;
+                        margin-right: 50%;
                     }
                     .carousel-item::before {
   content: "";

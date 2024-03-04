@@ -13,7 +13,6 @@ class Abonne extends Model
         'nom',
         'prenom',
         'email',
-        'numero',
         'email_verified_at',
     ];
 
@@ -45,6 +44,5 @@ class Abonne extends Model
         $this->attributes['nom'] = $attributes['nom'] ?? '';
         $this->attributes['prenom'] = $attributes['prenom'] ?? '';
         $this->attributes['email'] = $attributes['email'] ?? '';
-        $this->attributes['numero'] = $attributes['numero'] ?? '';
     }
 }

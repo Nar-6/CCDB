@@ -12,6 +12,7 @@
         "doctrine/dbal": "^3.8",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^3.4",
         "kkiapay/kkiapay-php": "dev-master",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",

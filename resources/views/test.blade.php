@@ -20,39 +20,69 @@
   </style>
 </head>
 <body>
-    <div class="row">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" src="{{asset('images/img1.jpg')}}" alt="First slide">
+    <div class="container">
+      <div class="membres">
+
+        <div class="membre">
+          <div class="photo-membre-container">
+            <div class="photo-membre">
+              <img src="{{ asset('images/img2.jpg')}}" alt="">
+            </div>
           </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('images/img2.jpg')}}" alt="Second slide">
+          <div class="nom-membre">
+            <h4>KOUNASSO Thibaut</h4>
           </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('images/img3.jpg')}}" alt="Third slide">
+          <div class="role-membre">
+            <h3>Développeur</h3>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+
       </div>
     </div>
 </body>
 
 <style>
-  body{
-    background-color: black;
+  .membres {
+    width: 80%;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .membre {
+    width: 80%;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .photo-membre{
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+  }
+  .photo-membre img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .photo-membre-container{
+    display: flex;
+    justify-content: center;
+  }
+  .nom-membre, .role-membre {
+    display: flex;
+    justify-content: center;
+  }
+  .role-membre h3 {
+    margin-top: 0;
+    color: #50876c;
+    text-align: center;
+  }
+  .nom-membre h4 {
+    margin-top: 30px;
+    text-align: center;
   }
 </style>
 </html>
